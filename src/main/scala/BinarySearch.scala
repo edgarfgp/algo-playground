@@ -25,7 +25,7 @@ object BinarySearch extends App {
                 low = mid + 1
         }
 
-        null
+        0
     }
 
     println(binarySearch(List.range(1, 1000000), 999))
