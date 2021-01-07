@@ -20,8 +20,8 @@ logs/
 project/*-shim.sbt
 project/project/
 project/target/
-target/
 .scala_dependencies
 .worksheet
 .bsp
 project
+.swp
