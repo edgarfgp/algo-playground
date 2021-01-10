@@ -1,4 +1,5 @@
 import Array._
+import scala.util.Random
 
 object QuickSort {
 
@@ -76,7 +77,8 @@ object QuickSort {
         if(array.length < 2) {
             array // Base case . Array already sorted
         }else {
-            val pivot = array(0)
+            //I order to take advantage of this also. You can choose a random pivot number
+            val pivot = array(Random.between(0, array.length-1))
             val less = array.filter(i => i < pivot)
             val greater = array.filter (i => i > pivot)
             concat(quickSort(less), Array(pivot), quickSort(greater))
@@ -85,9 +87,9 @@ object QuickSort {
 
     def quickSortFunc(list: List[Int]): List[Int] = {
         list match {
-            case Nil        => Nil
-            case a :: Nil   => List(a)
-            case a :: tail  => quickSortFunc(tail.filter(x=> x <= a)) ::: List(a) ::: quickSortFunc(tail.filter(x => x > a))
+        case Nil => Nil
+            case a :: Nil => List(a)
+            case a :: tail => quickSortFunc(tail.filter(x=> x <= a)) ::: List(a) ::: quickSortFunc(tail.filter(x => x > a))
         }
     }
 
@@ -98,8 +100,12 @@ object QuickSort {
 //        println(sumAllRecursive(Array(1,2,3,4)))
 //        println(listCountRecursive(List(1,2,3,4)))
 //        println(findMaxNumber(List(1,2,3,4, 10)))
-//        quickSort(Array(9, 8, 6, 99, 13, 1, 10)).foreach(println)
-        quickSortFunc(List(9, 8, 6, 99, 13, 1, 10)).foreach(println)
+        quickSort(Array(9, 8, 6, 99, 13, 1, 10)).foreach(println)
+//        quickSortFunc(List(9, 8, 6, 99, 13, 1, 10)).foreach(println)
     }
+
+    // Recap
+    // QuickSort is unique because it depends in pivot you choose
+    // The performance of quick sort depends on the pivot you choose
 
 }
